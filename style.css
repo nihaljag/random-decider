@@ -4,7 +4,7 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, sans-
 
 /* Fullscreen background, center‐crop (no stretch) */
 body {
-  background: url('img/img.jpg') no-repeat center center;
+  background: url('img.jpg') no-repeat center center;
   background-size: cover;
   position: relative;
 }
