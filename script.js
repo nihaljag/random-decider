@@ -43,5 +43,14 @@ decideBtn.addEventListener('click', () => {
     const idx = Math.floor(Math.random() * copy.length);
     pick.push(copy.splice(idx, 1)[0]);
   }
+  const spinner = document.getElementById('spinner');
+resultDiv.classList.add('hidden');
+spinner.classList.remove('hidden');
+resultDiv.textContent = '';
+
+setTimeout(() => {
+  spinner.classList.add('hidden');
   resultDiv.textContent = pick.join(', ');
+  resultDiv.classList.remove('hidden');
+}, 3000);
 });
