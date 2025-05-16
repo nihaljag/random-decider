@@ -35,8 +35,23 @@ decideBtn.addEventListener('click', () => {
   const count = parseInt(countInput.value, 10) || 1;
   if (options.length === 0) {
     resultDiv.textContent = 'Add some options first!';
+    resultDiv.classList.remove('hidden');
     return;
   }
+
+  resultDiv.classList.add('hidden');
+  resultDiv.textContent = '';
+
+  const pick = [];
+  const copy = [...options];
+  for (let i = 0; i < Math.min(count, copy.length); i++) {
+    const idx = Math.floor(Math.random() * copy.length);
+    pick.push(copy.splice(idx, 1)[0]);
+  }
+
+  resultDiv.textContent = pick.join(', ');
+  resultDiv.classList.remove('hidden');
+});
   const pick = [];
   const copy = [...options];
   for (let i = 0; i < Math.min(count, copy.length); i++) {
