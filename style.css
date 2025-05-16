@@ -95,6 +95,47 @@ body {
   border-radius: .3rem;
 }
 
+/* Hidden class */
+.hidden {
+  display: none;
+}
+
+/* Spinner animation */
+.spinner {
+  margin: 0 auto;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #007bff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Result reveal animation */
+@keyframes popIn {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#result {
+  animation: popIn 0.4s ease-out forwards;
+  font-weight: bold;
+  color: #007bff;
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+
 /* Decide button */
 .decide {
   padding: 0.7rem;
