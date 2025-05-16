@@ -7,6 +7,7 @@ const countInput = document.getElementById('countSelect');
 
 let options = [];
 
+// Render the list of added options
 function renderOptions() {
   optionsList.innerHTML = '';
   options.forEach((opt, idx) => {
@@ -23,6 +24,7 @@ function renderOptions() {
   });
 }
 
+// Add button handler
 addBtn.addEventListener('click', () => {
   const val = optionInput.value.trim();
   if (!val) return;
@@ -31,17 +33,21 @@ addBtn.addEventListener('click', () => {
   renderOptions();
 });
 
+// Decide button handler — **no delay, instant pop-in**
 decideBtn.addEventListener('click', () => {
   const count = parseInt(countInput.value, 10) || 1;
+
   if (options.length === 0) {
     resultDiv.textContent = 'Add some options first!';
     resultDiv.classList.remove('hidden');
     return;
   }
 
+  // Hide before resetting so animation can replay
   resultDiv.classList.add('hidden');
   resultDiv.textContent = '';
 
+  // Pick random options
   const pick = [];
   const copy = [...options];
   for (let i = 0; i < Math.min(count, copy.length); i++) {
@@ -49,23 +55,7 @@ decideBtn.addEventListener('click', () => {
     pick.push(copy.splice(idx, 1)[0]);
   }
 
+  // Immediately show result with pop-in animation
   resultDiv.textContent = pick.join(', ');
   resultDiv.classList.remove('hidden');
-});
-  const pick = [];
-  const copy = [...options];
-  for (let i = 0; i < Math.min(count, copy.length); i++) {
-    const idx = Math.floor(Math.random() * copy.length);
-    pick.push(copy.splice(idx, 1)[0]);
-  }
-  const spinner = document.getElementById('spinner');
-resultDiv.classList.add('hidden');
-spinner.classList.remove('hidden');
-resultDiv.textContent = '';
-
-setTimeout(() => {
-  spinner.classList.add('hidden');
-  resultDiv.textContent = pick.join(', ');
-  resultDiv.classList.remove('hidden');
-}, 3000);
 });
